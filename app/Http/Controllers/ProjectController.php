@@ -18,6 +18,7 @@ class ProjectController extends Controller
     {
         $projects = Project::all();
 
+
         return view('pages.project.dashboard.index', compact('projects'));
     }
 
@@ -113,6 +114,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $project->technologies()->sync([]);
         if($project->preview){
             Storage::delete($project->preview);
         }

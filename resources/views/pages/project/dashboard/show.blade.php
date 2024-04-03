@@ -24,6 +24,15 @@
                 </p>
                 <p class="card-text">{{$project->description}}</p>
                 <p>{{$project->language}}</p>
+                <ul class="d-flex gap-2 unstyled flex-wrap p-0 m-0 pb-3">
+                        @forelse($project->technologies as $technology)
+                            <li class="badge text-bg-primary dimensioniPill">{{ $technology->name }}</li>
+                            @empty
+                                <strong>
+                                    Non sono presenti Tecnologie selezionate
+                                </strong>
+                        @endforelse
+                    </ul>
             </div>
         </div>
     </div>
