@@ -59,6 +59,23 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="technologies" class="form-label">Seleziona le Tecnologie usate</label>
+            <select class="form-select @error('technologies') is-invalid @enderror" id="technologies" name="technologies[]" multiple required>
+                <option value="">Open this select menu</option>
+
+                @foreach($technologies as $item)
+                    <option value="{{$item->id}}" {{$item->id == old('technologies') ? 'selected' : ''}}>{{$item->name}}</option>
+                @endforeach
+            </select>
+            @error('technologies')
+                <div class="alert alert-danger">
+
+                    {{ $message }}
+
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="description" class="form-label">Descrizione</label>
             <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" name="description" value="{{old('description', $project->description)}}">
             @error('description')
